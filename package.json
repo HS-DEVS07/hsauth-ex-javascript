@@ -1,0 +1,12 @@
+{
+  "name": "hsauth-javascript-example",
+  "version": "1.0.0",
+  "description": "HS DEVS AUTH JavaScript / Node.js Client Example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["hsauth", "authentication", "license", "licensing"],
+  "author": "HS DEVS AUTH",
+  "license": "MIT"
+}
