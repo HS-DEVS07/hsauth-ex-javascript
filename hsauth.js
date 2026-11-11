@@ -4,9 +4,13 @@
  */
 
 class HSAuth {
-  constructor({ name, ownerid, version = '1.0', apiUrl = 'https://hsauth.mujahid.xyz/api/1.3/' }) {
+  constructor({ name, ownerid, secret, version = '1.0', apiUrl = 'https://hsauth.mujahid.xyz/api/1.3/' }) {
+    if (!name || !ownerid || !secret) {
+      throw new Error('HSAuth requires name, ownerid, and secret.');
+    }
     this.name = name;
     this.ownerid = ownerid;
+    this.secret = secret;
     this.version = version;
     this.apiUrl = apiUrl.replace(/\/+$/, '') + '/';
 
@@ -41,8 +45,12 @@ class HSAuth {
   }
 
   async _req(params) {
+    if (!this.secret) {
+      return { success: false, message: 'Application secret is required' };
+    }
     params.name = this.name;
     params.ownerid = this.ownerid;
+    params.secret = this.secret;
 
     const body = new URLSearchParams(params).toString();
     const res = await fetch(this.apiUrl, {
