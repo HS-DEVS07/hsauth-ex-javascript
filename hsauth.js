@@ -4,7 +4,7 @@
  */
 
 class HSAuth {
-  constructor({ name, ownerid, secret, version = '1.0', apiUrl = 'https://hsauth.mujahid.xyz/api/1.3/' }) {
+  constructor({ name, ownerid, secret, version = '1.0', apiUrl = 'https://auth.hsdevs.pro/api/1.3/' }) {
     if (!name || !ownerid || !secret) {
       throw new Error('HSAuth requires name, ownerid, and secret.');
     }
